@@ -1,6 +1,7 @@
 package com.yupi.yuaicodemother.controller;
 
 import cn.hutool.core.bean.BeanUtil;
+import cn.hutool.core.util.StrUtil;
 import com.mybatisflex.core.paginate.Page;
 import com.yupi.yuaicodemother.annotation.AuthCheck;
 import com.yupi.yuaicodemother.common.BaseResponse;
@@ -13,8 +14,12 @@ import com.yupi.yuaicodemother.exception.ThrowUtils;
 import com.yupi.yuaicodemother.model.dto.user.*;
 import com.yupi.yuaicodemother.model.vo.LoginUserVO;
 import com.yupi.yuaicodemother.model.vo.UserVO;
+import com.yupi.yuaicodemother.manager.CosManager;
 import jakarta.annotation.Resource;
 import jakarta.servlet.http.HttpServletRequest;
+import org.springframework.cache.annotation.CacheEvict;
+import org.springframework.http.MediaType;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -22,8 +27,17 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import com.yupi.yuaicodemother.model.entity.User;
 import com.yupi.yuaicodemother.service.UserService;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
+import org.springframework.web.multipart.MultipartException;
 
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Path;
+import java.time.LocalDate;
+import java.time.format.DateTimeFormatter;
 import java.util.List;
+import java.util.UUID;
 
 /**
  * 用户 控制层。
@@ -36,6 +50,9 @@ public class UserController {
 
     @Resource
     private UserService userService;
+
+    @Resource
+    private CosManager cosManager;
 
     /**
      * 用户注册
@@ -146,6 +163,7 @@ public class UserController {
      */
     @PostMapping("/update")
     @AuthCheck(mustRole = UserConstant.ADMIN_ROLE)
+    @CacheEvict(value = "good_app_page", allEntries = true)
     public BaseResponse<Boolean> updateUser(@RequestBody UserUpdateRequest userUpdateRequest) {
         if (userUpdateRequest == null || userUpdateRequest.getId() == null) {
             throw new BusinessException(ErrorCode.PARAMS_ERROR);
@@ -155,6 +173,74 @@ public class UserController {
         boolean result = userService.updateById(user);
         ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR);
         return ResultUtils.success(true);
+    }
+
+    /**
+     * 更新当前登录用户信息（昵称、头像、简介）
+     */
+    @PostMapping("/update/my")
+    @CacheEvict(value = "good_app_page", allEntries = true)
+    public BaseResponse<Boolean> updateMyUser(@RequestBody UserUpdateRequest userUpdateRequest,
+                                              HttpServletRequest request) {
+        ThrowUtils.throwIf(userUpdateRequest == null, ErrorCode.PARAMS_ERROR);
+        User loginUser = userService.getLoginUser(request);
+
+        String userName = userUpdateRequest.getUserName();
+        if (StrUtil.isNotBlank(userName) && userName.length() > 20) {
+            throw new BusinessException(ErrorCode.PARAMS_ERROR, "用户名长度不能超过20");
+        }
+
+        User user = new User();
+        user.setId(loginUser.getId());
+        user.setUserName(StrUtil.isBlank(userName) ? loginUser.getUserName() : userName.trim());
+        user.setUserAvatar(userUpdateRequest.getUserAvatar());
+        user.setUserProfile(userUpdateRequest.getUserProfile());
+
+        boolean result = userService.updateById(user);
+        ThrowUtils.throwIf(!result, ErrorCode.OPERATION_ERROR);
+        return ResultUtils.success(true);
+    }
+
+    /**
+     * 上传头像并返回可访问 URL
+     */
+    @PostMapping(value = "/upload/avatar", consumes = MediaType.MULTIPART_FORM_DATA_VALUE)
+    public BaseResponse<String> uploadAvatar(@RequestParam("file") MultipartFile file,
+                                             HttpServletRequest request) {
+        ThrowUtils.throwIf(file == null || file.isEmpty(), ErrorCode.PARAMS_ERROR, "上传文件不能为空");
+        User loginUser = userService.getLoginUser(request);
+
+        String contentType = file.getContentType();
+        ThrowUtils.throwIf(contentType == null || !contentType.startsWith("image/"), ErrorCode.PARAMS_ERROR, "仅支持图片文件");
+        ThrowUtils.throwIf(file.getSize() > 5 * 1024 * 1024, ErrorCode.PARAMS_ERROR, "图片大小不能超过 5MB");
+
+        String originalFileName = file.getOriginalFilename();
+        String suffix = "png";
+        if (StrUtil.isNotBlank(originalFileName) && originalFileName.contains(".")) {
+            suffix = originalFileName.substring(originalFileName.lastIndexOf('.') + 1);
+        }
+
+        String datePath = LocalDate.now().format(DateTimeFormatter.ofPattern("yyyy/MM/dd"));
+        String fileName = String.format("%s_%s.%s", loginUser.getId(), UUID.randomUUID().toString().substring(0, 8), suffix);
+        String cosKey = String.format("/avatars/%s/%s", datePath, fileName);
+
+        Path tempPath = null;
+        try {
+            tempPath = Files.createTempFile("avatar-upload-", "." + suffix);
+            file.transferTo(tempPath.toFile());
+            String avatarUrl = cosManager.uploadFile(cosKey, tempPath.toFile());
+            ThrowUtils.throwIf(StrUtil.isBlank(avatarUrl), ErrorCode.OPERATION_ERROR, "上传头像失败");
+            return ResultUtils.success(avatarUrl);
+        } catch (IOException | IllegalStateException | MultipartException e) {
+            throw new BusinessException(ErrorCode.OPERATION_ERROR, "上传头像失败：" + e.getMessage());
+        } finally {
+            if (tempPath != null) {
+                try {
+                    Files.deleteIfExists(tempPath);
+                } catch (IOException ignored) {
+                }
+            }
+        }
     }
 
     /**
