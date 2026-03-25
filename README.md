@@ -1,4 +1,4 @@
-﻿# No Code AI
+﻿# AI 0 Code
 
 一个基于 Spring Boot 3 + LangChain4j + Vue 3 的 AI 零代码应用生成平台。
 
@@ -152,8 +152,8 @@ yu-ai-code-mother-microservice/ # 微服务版本
 ### 1. 克隆项目
 
 ```bash
-git clone https://github.com/csmgfq/No_code_AI.git
-cd No_code_AI
+git clone https://github.com/csmgfq/ai-0-code.git
+cd ai-0-code
 ```
 
 ### 2. 初始化数据库
