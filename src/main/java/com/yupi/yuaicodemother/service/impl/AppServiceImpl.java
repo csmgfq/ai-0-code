@@ -191,8 +191,10 @@ public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppSe
         updateApp.setDeployedTime(LocalDateTime.now());
         boolean updateResult = this.updateById(updateApp);
         ThrowUtils.throwIf(!updateResult, ErrorCode.OPERATION_ERROR, "更新应用部署信息失败");
-        // 10. 构建应用访问 URL
-        String appDeployUrl = String.format("%s/%s/", deployHost, deployKey);        // 11. 异步生成截图并且更新应用封面
+        // 10. 构建应用访问 URL（统一去掉 deployHost 末尾斜杠，避免出现双斜杠）
+        String normalizedDeployHost = StrUtil.removeSuffix(deployHost, "/");
+        String appDeployUrl = StrUtil.format("{}/{}/", normalizedDeployHost, deployKey);
+        // 11. 异步生成截图并且更新应用封面
         generateAppScreenshotAsync(appId, appDeployUrl);
         return appDeployUrl;
     }
