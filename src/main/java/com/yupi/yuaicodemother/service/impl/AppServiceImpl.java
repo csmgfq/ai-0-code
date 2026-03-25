@@ -55,7 +55,7 @@ import java.util.stream.Collectors;
 @Slf4j
 public class AppServiceImpl extends ServiceImpl<AppMapper, App> implements AppService {
 
-    @Value("${code.deploy-host:http://localhost}")
+    @Value("${code.deploy-host:http://localhost:8123/api/static}")
     private String deployHost;
 
     @Resource
