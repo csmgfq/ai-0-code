@@ -19,11 +19,6 @@
 <table>
   <tr>
     <td align="center">
-      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/26/3d5551fc_compressed.jpg" width="300px" alt="宠物饲养页面"/>
-      <br/>
-      <sub><b>宠物饲养相关页面</b></sub>
-    </td>
-    <td align="center">
       <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/25/82a39e62_compressed.jpg" width="300px" alt="个人博客"/>
       <br/>
       <sub><b>现代化个人博客网站</b></sub>
