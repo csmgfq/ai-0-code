@@ -19,26 +19,19 @@
 <table>
   <tr>
     <td align="center">
-      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/26/3d5551fc_compressed.jpg" width="300px" alt="示例应用1"/>
+      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/26/3d5551fc_compressed.jpg" width="300px" alt="宠物饲养页面"/>
       <br/>
-      <sub><b>AI生成应用示例 1</b></sub>
+      <sub><b>宠物饲养相关页面</b></sub>
     </td>
     <td align="center">
-      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/25/82a39e62_compressed.jpg" width="300px" alt="示例应用2"/>
+      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/25/82a39e62_compressed.jpg" width="300px" alt="个人博客"/>
       <br/>
-      <sub><b>AI生成应用示例 2</b></sub>
-    </td>
-  </tr>
-  <tr>
-    <td align="center">
-      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/26/088f8fa5_compressed.jpg" width="300px" alt="示例应用3"/>
-      <br/>
-      <sub><b>AI生成应用示例 3</b></sub>
+      <sub><b>现代化个人博客网站</b></sub>
     </td>
     <td align="center">
-      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/26/87df4205_compressed.jpg" width="300px" alt="示例应用4"/>
+      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/26/87df4205_compressed.jpg" width="300px" alt="在线商城"/>
       <br/>
-      <sub><b>AI生成应用示例 4</b></sub>
+      <sub><b>功能完整的在线商城</b></sub>
     </td>
   </tr>
 </table>
