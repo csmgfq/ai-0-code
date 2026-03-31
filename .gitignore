@@ -40,6 +40,13 @@ build/
 
 ### Local Docs ###
 AIcode/
+docs/
+
+### Test Files ###
+/*.java
+/*.class
 
 ### Claude ###
 .claude/
+sql/migrate_to_new_db.sql
+sql/update_password.sql
