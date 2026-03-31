@@ -213,7 +213,8 @@ npm run dev
 默认开发地址（以本地输出为准）：
 
 - 前端：http://localhost:5173
-- 后端：http://localhost:8101
+- 后端：http://localhost:8123
+- API文档：http://localhost:8123/api/doc.html
 
 ## 监控与运维
 
