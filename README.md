@@ -19,24 +19,24 @@
 <table>
   <tr>
     <td align="center">
-      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/25/0395d692_compressed.jpg" width="300px" alt="示例应用1"/>
+      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/26/3d5551fc_compressed.jpg" width="300px" alt="示例应用1"/>
       <br/>
       <sub><b>AI生成应用示例 1</b></sub>
     </td>
     <td align="center">
-      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/25/1f817c9b_compressed.jpg" width="300px" alt="示例应用2"/>
+      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/25/82a39e62_compressed.jpg" width="300px" alt="示例应用2"/>
       <br/>
       <sub><b>AI生成应用示例 2</b></sub>
     </td>
   </tr>
   <tr>
     <td align="center">
-      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/25/36dd0574_compressed.jpg" width="300px" alt="示例应用3"/>
+      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/26/088f8fa5_compressed.jpg" width="300px" alt="示例应用3"/>
       <br/>
       <sub><b>AI生成应用示例 3</b></sub>
     </td>
     <td align="center">
-      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/25/8427917e_compressed.jpg" width="300px" alt="示例应用4"/>
+      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/26/87df4205_compressed.jpg" width="300px" alt="示例应用4"/>
       <br/>
       <sub><b>AI生成应用示例 4</b></sub>
     </td>
