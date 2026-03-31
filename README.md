@@ -12,6 +12,37 @@
 - 一键部署分享：支持在线访问、封面图生成与源码下载
 - 管理后台能力：包含用户管理、应用管理、系统与业务监控
 
+## 生成案例展示
+
+以下是使用本平台生成的应用示例：
+
+<table>
+  <tr>
+    <td align="center">
+      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/25/0395d692_compressed.jpg" width="300px" alt="示例应用1"/>
+      <br/>
+      <sub><b>AI生成应用示例 1</b></sub>
+    </td>
+    <td align="center">
+      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/25/1f817c9b_compressed.jpg" width="300px" alt="示例应用2"/>
+      <br/>
+      <sub><b>AI生成应用示例 2</b></sub>
+    </td>
+  </tr>
+  <tr>
+    <td align="center">
+      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/25/36dd0574_compressed.jpg" width="300px" alt="示例应用3"/>
+      <br/>
+      <sub><b>AI生成应用示例 3</b></sub>
+    </td>
+    <td align="center">
+      <img src="https://ai0code-1408800070.cos.ap-guangzhou.myqcloud.com/screenshots/2026/03/25/8427917e_compressed.jpg" width="300px" alt="示例应用4"/>
+      <br/>
+      <sub><b>AI生成应用示例 4</b></sub>
+    </td>
+  </tr>
+</table>
+
 ## 系统架构图
 
 ```mermaid
