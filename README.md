@@ -144,7 +144,7 @@ OBS --> GRAF[Grafana]
 ### 架构形态
 
 - 单体工程（当前目录）
-- 微服务拆分工程（ai-code-mother-microservice）
+- 微服务拆分工程（ai-code- -microservice）
 
 ## 目录结构
 
@@ -154,8 +154,8 @@ src/                          # 主后端源码
 sql/                          # 数据库脚本
 grafana/                      # Grafana 配置
 prometheus.yml                # Prometheus 配置
-ai-code-mother-frontend/   # 前端项目
-ai-code-mother-microservice/ # 微服务版本
+ai-code- -frontend/   # 前端项目
+ai-code- -microservice/ # 微服务版本
 ```
 
 ## 环境要求
@@ -205,7 +205,7 @@ mvnw.cmd spring-boot:run
 ### 4. 启动前端
 
 ```bash
-cd ai-code-mother-frontend
+cd ai-code- -frontend
 npm install
 npm run dev
 ```
@@ -225,7 +225,7 @@ npm run dev
 
 ## 微服务版本说明
 
-ai-code-mother-microservice 目录下提供微服务拆分版本，包含 AI、应用、用户、网关等模块，可用于进一步演进高并发和大规模部署场景。
+ai-code- -microservice 目录下提供微服务拆分版本，包含 AI、应用、用户、网关等模块，可用于进一步演进高并发和大规模部署场景。
 
 ## 常见问题
 
