@@ -144,7 +144,7 @@ OBS --> GRAF[Grafana]
 ### 架构形态
 
 - 单体工程（当前目录）
-- 微服务拆分工程（ai-code- -microservice）
+- 微服务拆分工程（ai-code-microservice）
 
 ## 目录结构
 
@@ -154,8 +154,8 @@ src/                          # 主后端源码
 sql/                          # 数据库脚本
 grafana/                      # Grafana 配置
 prometheus.yml                # Prometheus 配置
-ai-code- -frontend/   # 前端项目
-ai-code- -microservice/ # 微服务版本
+ai-code-frontend/   # 前端项目
+ai-code-microservice/ # 微服务版本
 ```
 
 ## 环境要求
